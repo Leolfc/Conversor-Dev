@@ -113,3 +113,15 @@ color: #555;
 font-size: 20px;
 font-weight: 700;
 }
+.imgLogo{
+  animation:moeda 1s infinite ;
+}
+
+@keyframes moeda {
+  0%{
+    transform: rotate(0deg);
+  }
+  30%{
+    transform: rotate(10deg);
+  }
+}
