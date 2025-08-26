@@ -6,13 +6,11 @@ const img = document.querySelector(".bandeiraEstadosUnidos");
 const valorConvertido = document.querySelector(".currency-valueUs");
 const nomeMoeda = document.querySelector("#nomeMoeda");
 
- convertButton.addEventListener("click", (event) => {
-  event.preventDefault();
+function moeda() {
   const dolarToday = 5.42;
   const euroToday = 6.3;
 
-    
-    if (selectFLag.value === "dolar") {
+  if (selectFLag.value === "dolar") {
     valorConvertido.innerHTML = new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
@@ -26,25 +24,27 @@ const nomeMoeda = document.querySelector("#nomeMoeda");
     nomeMoeda.innerHTML = "Euro";
   }
 
-
   currencyBr.innerHTML = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(input.value); //valor digitado no input
+}
+convertButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  moeda();
+});
 
-  if (input.value === "" || input.value != Number(input.value)) {
-    alert("Digite um valor válido");
+// if (input.value === "" || input.value != Number(input.value)) {
+//   alert("Digite um valor válido");
+// }
+selectFLag.addEventListener("change", () => {
+  if (selectFLag.value === "dolar") {
+    img.src = "assets/usa.png";
+    nomeMoeda.innerHTML = "Dólar Americano";
   }
-
-  selectFLag.addEventListener("change", () => {
-    if (selectFLag.value === "dolar") {
-      img.src = "assets/usa.png";
-      nomeMoeda.innerHTML = "Dólar Americano";
-    }
-    if (selectFLag.value === "euro") {
-      img.src = " assets/euro.png";
-      nomeMoeda.innerHTML = "Euro";
-    }
-
-  });
+  if (selectFLag.value === "euro") {
+    img.src = " assets/euro.png";
+    nomeMoeda.innerHTML = "Euro";
+  }
+  moeda();
 });
